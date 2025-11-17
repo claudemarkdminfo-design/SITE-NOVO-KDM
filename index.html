@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDM Internet - Fibra Óptica de Alta Velocidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0066CC;
+            --secondary-color: #FF6B35;
+            --accent-color: #00D4FF;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #fff;
+            --gradient-primary: linear-gradient(135deg, #0066CC 0%, #004499 100%);
+            --gradient-secondary: linear-gradient(135deg, #FF6B35 0%, #FF8E53 100%);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .cta-button {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+
+        /* Speedtest Section */
+        .speedtest-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* Plans Section */
+        .plans-section {
+            padding: 80px 0;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .plan-card.featured {
+            border: 3px solid var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured::before {
+            content: 'MAIS VENDIDO';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .plan-speed {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+            }
+        }
+
+        /* OpenSpeedTest Widget Styling */
+        .speedtest-widget {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .speedtest-widget small a {
+            color: #0066CC;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .speedtest-widget small a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div style="width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0066CC; font-weight: bold;">KDM</div>
+                <span>KDM Internet</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#speedtest">Speedtest</a></li>
+                <li><a href="#plans">Planos</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <button class="cta-button">Assine Já</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Internet Fibra Óptica Ultra-Rápida</h1>
+            <p>Conecte-se ao futuro com a KDM Internet. Velocidade incrível para sua casa ou empresa!</p>
+            <div class="hero-buttons">
+                <button class="cta-button pulse">Ver Planos</button>
+                <button class="cta-button" style="background: transparent; border: 2px solid white;">Testar Velocidade</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speedtest Section com OpenSpeedTest Real -->
+    <section class="speedtest-section" id="speedtest">
+        <div class="container">
+            <h2 class="section-title">Teste sua Velocidade de Internet</h2>
+            
+            <div class="speedtest-widget">
+                <!--OST Widget code start-->
+                <div style="text-align:right;">
+                    <div style="min-height:360px;">
+                        <div style="width:100%;height:0;padding-bottom:50%;position:relative;">
+                            <iframe 
+                                style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;min-height:360px;border:none;overflow:hidden !important;" 
+                                src="//openspeedtest.com/speedtest">
+                            </iframe>
+                        </div>
+                    </div>
+                    <small>
+                        <a href="https://openspeedtest.com" target="_blank" style="color: #0066CC; text-decoration: none;">
+                            Powered by OpenSpeedtest.com
+                        </a>
+                    </small>
+                </div>
+                <!-- OST Widget code end -->
+            </div>
+
+            <p style="text-align: center; margin-top: 1rem; color: #666;">
+                <i class="fas fa-bolt" style="color: #FF6B35;"></i> 
+                Teste gratuito, sem instalação e 100% funcional.
+            </p>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans-section" id="plans">
+        <div class="container">
+            <h2 class="section-title">Nossos Planos</h2>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3>Plano Básico</h3>
+                    <div class="plan-speed">200</div>
+                    <p>Mega</p>
+                    <div class="plan-price">R$ 99,90/mês</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check" style="color: green;"></i> Internet Fibra Óptica</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Wi-Fi Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Instalação Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Suporte 24/7</li>
+                    </ul>
+                    <button class="cta-button" style="width: 100%;">Contratar</button>
+                </div>
+                
+                <div class="plan-card featured">
+                    <h3>Plano Intermediário</h3>
+                    <div class="plan-speed">400</div>
+                    <p>Mega</p>
+                    <div class="plan-price">R$ 149,90/mês</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check" style="color: green;"></i> Internet Fibra Óptica</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Wi-Fi Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Instalação Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Suporte 24/7</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> 1 Mês Grátis</li>
+                    </ul>
+                    <button class="cta-button" style="width: 100%;">Contratar</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>Plano Premium</h3>
+                    <div class="plan-speed">600</div>
+                    <p>Mega</p>
+                    <div class="plan-price">R$ 199,90/mês</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check" style="color: green;"></i> Internet Fibra Óptica</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Wi-Fi Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Instalação Grátis</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> Suporte 24/7</li>
+                        <li><i class="fas fa-check" style="color: green;"></i> 2 Meses Grátis</li>
+                    </ul>
+                    <button class="cta-button" style="width: 100%;">Contratar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Por que escolher a KDM Internet?</h2>
+                    <p>Com mais de 14 anos de mercado, a KDM Internet é líder em conectividade de alta velocidade. Nossa infraestrutura de fibra óptica garante estabilidade e velocidade incomparáveis para sua casa ou empresa.</p>
+                    <p>Estamos comprometidos em oferecer o melhor serviço de internet da região, com suporte técnico especializado e planos que se adequam às suas necessidades.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">14+</div>
+                            <p>Anos de Experiência</p>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15K+</div>
+                            <p>Clientes Atendidos</p>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">99%</div>
+                            <p>Satisfação</p>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <p>Suporte</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-network-wired" style="font-size: 200px; color: var(--accent-color); opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Informações de Contato</h3>
+                    <p style="margin-bottom: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Assis Chateaubriand, PR</p>
+                    <p style="margin-bottom: 1rem;"><i class="fas fa-phone" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> (44) 99999-9999</p>
+                    <p style="margin-bottom: 1rem;"><i class="fas fa-envelope" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> contato@kdminternet.com.br</p>
+                    <p style="margin-bottom: 2rem;"><i class="fas fa-clock" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Atendimento 24/7</p>
+                    
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Nos siga nas redes sociais</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KDM Internet</h3>
+                    <p>Sua conexão com o futuro. Internet fibra óptica de alta velocidade para sua casa ou empresa.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#" style="color: white; text-decoration: none;">Planos</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Cobertura</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Suporte</a></li>
+                        <li><a href="#" style="color: white; text-decoration: none;">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Serviços</h3>
+                    <ul style="list-style: none;">
+                        <li>Internet Residencial</li>
+                        <li>Internet Corporativa</li>
+                        <li>Wi-Fi Mesh</li>
+                        <li>Instalação Profissional</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: #444; margin: 2rem 0;">
+            <p>&copy; 2024 KDM Internet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo contato! Entraremos em breve.');
+            this.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 102, 204, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--gradient-primary)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.plan-card, .stat, .about-text').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

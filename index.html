@@ -210,6 +210,46 @@
             gap: 2.5rem;
         }
 
+        .hero-visual {
+            position: relative;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(11, 91, 211, 0.18));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.4rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            border-radius: 16px;
+            filter: saturate(1.05);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+        }
+
+        .hero-visual .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .hero-chip {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-chip i {
+            color: var(--accent-color);
+        }
+
         .hero h1 {
             font-size: clamp(2.4rem, 4vw, 3.4rem);
             line-height: 1.1;
@@ -301,6 +341,110 @@
 
         .feature-card p {
             color: var(--text-muted);
+        }
+
+        .fiber-showcase {
+            background: #fff;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            align-items: stretch;
+        }
+
+        .showcase-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            min-height: 240px;
+            color: #fff;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #e7eaf0;
+        }
+
+        .showcase-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.75);
+            transition: transform 0.35s ease;
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.65) 100%);
+        }
+
+        .showcase-content {
+            position: absolute;
+            bottom: 1.2rem;
+            left: 1.2rem;
+            right: 1.2rem;
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .showcase-content p {
+            color: rgba(255,255,255,0.92);
+            font-size: 0.95rem;
+        }
+
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+        }
+
+        .infra-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.2rem;
+            border: 1px solid #e7eaf0;
+            box-shadow: var(--shadow-soft);
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .infra-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: rgba(11, 91, 211, 0.12);
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .infra-card p {
+            color: var(--text-muted);
+        }
+
+        .cta-banner {
+            background: linear-gradient(115deg, #0b5bd3 0%, #0f3c99 50%, #0d1b2a 100%);
+            color: #fff;
+            border-radius: 18px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            align-items: center;
+            gap: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-banner img {
+            width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.28);
         }
 
         .speedtest-section {
@@ -683,13 +827,48 @@
                     </div>
                 </div>
             </div>
-            <div class="floating-card">
-                <h3 style="margin-bottom: 0.75rem;">Pronto para a casa toda</h3>
-                <p style="color: rgba(255,255,255,0.85); margin-bottom: 0.75rem;">Cobrimos áreas amplas com roteadores Wi-Fi de última geração, priorizando estabilidade em todos os cômodos.</p>
-                <div style="display: grid; gap: 0.5rem;">
-                    <div class="pill" style="background: rgba(255,255,255,0.1); color: #fff;">Recomendado para streaming 4K</div>
-                    <div class="pill" style="background: rgba(255,255,255,0.1); color: #fff;">Pronto para videoconferência</div>
-                    <div class="pill" style="background: rgba(255,255,255,0.1); color: #fff;">Suporte humanizado</div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1612016011243-478417b9ca1a?auto=format&fit=crop&w=1200&q=80" alt="Fibra óptica iluminada" loading="lazy">
+                <div class="chip-row">
+                    <span class="hero-chip"><i class="fas fa-tachometer-alt"></i> Velocidade real</span>
+                    <span class="hero-chip"><i class="fas fa-satellite-dish"></i> Backbone redundante</span>
+                    <span class="hero-chip"><i class="fas fa-house-signal"></i> Wi-Fi otimizado</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fiber-showcase" id="fibra">
+        <div class="container">
+            <div class="section-header">
+                <div class="pill"><i class="fas fa-lightbulb"></i> Experiência fibra KDM</div>
+                <h2 class="section-title">Visual moderno com tecnologia real</h2>
+                <p class="section-subtitle">Imagens do nosso dia a dia em campo para mostrar como cuidamos da sua conexão.</p>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80" alt="Técnico instalando fibra" loading="lazy">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <h3>Instalação profissional</h3>
+                        <p>Cuidamos do roteamento e das conexões para entregar o máximo de velocidade em cada cômodo.</p>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1501163268664-3fdf329d019e?auto=format&fit=crop&w=1200&q=80" alt="Cabos de fibra óptica" loading="lazy">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <h3>Backbone em fibra</h3>
+                        <p>Rede redundante para manter estabilidade mesmo em horários de pico.</p>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=80" alt="Ambiente com Wi-Fi" loading="lazy">
+                    <div class="showcase-overlay"></div>
+                    <div class="showcase-content">
+                        <h3>Wi-Fi otimizado</h3>
+                        <p>Configurações personalizadas e opção de Mesh para sinal forte e estável.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -755,6 +934,38 @@
                 <i class="fas fa-plug" style="color: var(--secondary-color);"></i>
                 Teste gratuito, sem instalação e 100% funcional.
             </p>
+        </div>
+    </section>
+
+    <section class="section" id="infra">
+        <div class="container">
+            <div class="section-header">
+                <div class="pill"><i class="fas fa-network-wired"></i> Estrutura robusta</div>
+                <h2 class="section-title">Tudo o que uma rede de fibra moderna precisa</h2>
+                <p class="section-subtitle">Da rota troncal às antenas internas, montamos um ecossistema completo para estabilidade.</p>
+            </div>
+            <div class="infra-grid">
+                <div class="infra-card">
+                    <div class="infra-icon"><i class="fas fa-fiber-new"></i></div>
+                    <h3>Fibra até o modem</h3>
+                    <p>FTTH real, com equipamentos calibrados para entregar toda a largura de banda contratada.</p>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon"><i class="fas fa-route"></i></div>
+                    <h3>Rotas inteligentes</h3>
+                    <p>Balanceamento automático e múltiplas saídas para reduzir latência e evitar quedas.</p>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon"><i class="fas fa-house-signal"></i></div>
+                    <h3>Wi-Fi sem zonas mortas</h3>
+                    <p>Planejamento de cobertura com Wi-Fi 6 e Mesh opcional para distribuir sinal com potência.</p>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-icon"><i class="fas fa-shield-virus"></i></div>
+                    <h3>Segurança inclusa</h3>
+                    <p>Monitoramento ativo, atualizações remotas e filtros para manter dispositivos protegidos.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -871,6 +1082,23 @@
                         <li><i class="fas fa-check"></i> Planos que crescem junto com o seu negócio</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="consultoria">
+        <div class="container">
+            <div class="cta-banner">
+                <div>
+                    <div class="pill" style="background: rgba(255,255,255,0.18); color: #fff; display: inline-flex; align-items: center; gap: 0.4rem;"><i class="fas fa-user-astronaut"></i> Concierge digital</div>
+                    <h2 class="section-title" style="color: #fff; margin: 0.6rem 0 0.35rem;">Quer uma rede sob medida?</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Planejamos cobertura, roteadores e velocidade ideal para sua casa ou empresa com acompanhamento técnico exclusivo.</p>
+                    <div class="hero-cta" style="margin-top: 0.75rem;">
+                        <a class="cta-button" href="#contact"><i class="fas fa-calendar-check"></i> Agendar visita</a>
+                        <a class="cta-button ghost-button" href="#plans" style="background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.4);"><i class="fas fa-layer-group"></i> Ver pacotes</a>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Equipe configurando roteador" loading="lazy">
             </div>
         </div>
     </section>
